@@ -1,4 +1,5 @@
 "use client";
+import copy from "copy-to-clipboard";
 import React, { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { toast, ToastContainer } from "react-toastify";
@@ -82,14 +83,13 @@ export default function Home() {
               key={index}
               className="color"
               onClick={() => {
-                navigator.clipboard.writeText(color).then(() => {
+                if (copy(color))
                   toast("Copied " + color, {
                     position: "top-right",
                     autoClose: 1500,
                     theme: "dark",
                     pauseOnHover: false,
                   });
-                });
               }}
             >
               <div className="rect-box" style={{ background: color }}></div>
